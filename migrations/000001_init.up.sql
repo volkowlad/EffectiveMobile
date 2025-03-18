@@ -1,0 +1,22 @@
+CREATE TABLE songs
+(
+    id SERIAL NOT NULL UNIQUE,
+    song_name TEXT NOT NULL,
+    song_group TEXT NOT NULL
+);
+
+CREATE TABLE info
+(
+    id SERIAL NOT NULL UNIQUE,
+    song_id INTEGER REFERENCES songs (id) ON DELETE CASCADE NOT NULL,
+    release_date TEXT NOT NULL,
+    link TEXT NOT NULL,
+    chorus TEXT NOT NULL
+);
+
+CREATE TABLE text
+(
+    id SERIAL NOT NULL UNIQUE,
+    song_id INTEGER REFERENCES songs (id) ON DELETE CASCADE NOT NULL,
+    verse TEXT NOT NULL
+);

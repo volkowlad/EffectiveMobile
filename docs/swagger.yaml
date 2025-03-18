@@ -1,0 +1,208 @@
+basePath: /
+definitions:
+  EffectiveMobile.Info:
+    properties:
+      chorus:
+        type: string
+      id:
+        type: integer
+      link:
+        type: string
+      release_date:
+        type: string
+      song_id:
+        type: integer
+    type: object
+  EffectiveMobile.Song:
+    properties:
+      group:
+        type: string
+      id:
+        type: integer
+      song:
+        type: string
+    type: object
+  handler.respError:
+    properties:
+      massage:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: test task
+  title: Effective Mobile
+  version: 1.0.0
+paths:
+  /music:
+    get:
+      consumes:
+      - application/json
+      description: get library
+      operationId: get-library
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.respError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.respError'
+      summary: Get library
+      tags:
+      - Songs
+    post:
+      consumes:
+      - application/json
+      description: create song
+      operationId: create-song
+      parameters:
+      - description: song info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/EffectiveMobile.Song'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.respError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.respError'
+      summary: Create song
+      tags:
+      - Songs
+    put:
+      consumes:
+      - application/json
+      description: update song
+      operationId: update-song
+      parameters:
+      - description: song info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/EffectiveMobile.Info'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.respError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.respError'
+      summary: Update song
+      tags:
+      - Songs
+  /music/:id:
+    get:
+      consumes:
+      - application/json
+      description: delete song
+      operationId: delete-song
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.respError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.respError'
+      summary: Delete song
+      tags:
+      - Songs
+    post:
+      consumes:
+      - application/json
+      description: create verse
+      operationId: create-verse
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: integer
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.respError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.respError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.respError'
+      summary: Create verse
+      tags:
+      - Songs
+swagger: "2.0"
