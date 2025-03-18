@@ -1,0 +1,5 @@
+DROP TABLE song;
+
+DROP TABLE info;
+
+DROP TABLE text;
